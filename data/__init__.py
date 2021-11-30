@@ -1,1 +1,1 @@
-from .config import BOT_TOKEN, ADMINS, ip
+from . import config
