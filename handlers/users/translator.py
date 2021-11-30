@@ -1,17 +1,16 @@
-from aiogram.dispatcher.filters import Command
+from typing import Text
+from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.storage import FSMContext
 from loader import dp, tsl
 from aiogram.types import Message
 from keyboards.inline.language import langKeyboard
-import states
 from states.translateState import TranslateStates
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.markdown import hbold
 import logging
-from keyboards.inline.callback_datas import buyCallback
 
 
-@dp.message_handler(Command("translator"))
+@dp.message_handler(Text(equals=["📖Перевести📖"]))
 async def translatorState1(message: Message, state: FSMContext):
     await message.answer(text="Напишите слово или придложение или текст, который хотите перевести")
 
