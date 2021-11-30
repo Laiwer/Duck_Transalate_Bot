@@ -14,7 +14,7 @@ async def choiceLang(message: Message):
     await message.answer(text=text("Начальный язык: ", hbold(l.fromLang), "\nПереводимый язык: ", hbold(l.toLang)), reply_markup=choiLang)
 
 
-@l.dp.message_handler(Text(equals=["Начальный язык"]))
+@l.dp.message_handler(Text(equals=["✔Начальный язык👅"]))
 async def setFromLang1(message: Message):
     await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguage)
 
@@ -31,7 +31,7 @@ async def setFromLang2(message: Message, state: FSMContext):
         await message.answer(text="Язык не найден", reply_markup=mainKeyboard)
 
 
-@l.dp.message_handler(Text(equals=["Переводимый язык"]))
+@l.dp.message_handler(Text(equals=["🔄Переводимый язык👅"]))
 async def setToLang1(message: Message):
     await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguage)
     await langTo.Q1.set()
@@ -47,6 +47,6 @@ async def setToLang2(message: Message, state: FSMContext):
         await message.answer(text="Язык не найден", reply_markup=mainKeyboard)
 
 
-@l.dp.message_handler(Text(equals=["Отмена"]))
+@l.dp.message_handler(Text(equals=["❌Отмена❌"]))
 async def cancelSetLang(message: Message):
     await message.answer(text="Отмена выбора языка", reply_markup=mainKeyboard)
