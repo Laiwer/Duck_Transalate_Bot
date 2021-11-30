@@ -11,7 +11,8 @@ choiLang = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="Отмена"),
         ]
-    ]
+    ],
+    resize_keyboard=True
 )
 
 
@@ -21,5 +22,6 @@ choiceLanguage = ReplyKeyboardMarkup(
             KeyboardButton(text="русский"),
             KeyboardButton(text="английский")
         ]
-    ]
+    ],
+    resize_keyboard=True
 )
