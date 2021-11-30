@@ -3,38 +3,21 @@ from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.storage import FSMContext
 from loader import dp, tsl
 from aiogram.types import Message
-from keyboards.inline.language import langKeyboard
 from states.translateState import TranslateStates
-from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.markdown import hbold
+import loader as l
 
 
 @dp.message_handler(Text(equals=["📖Перевести📖"]))
 async def translatorState1(message: Message, state: FSMContext):
     await message.answer(text="Напишите слово или придложение или текст, который хотите перевести")
-
     await TranslateStates.Q1.set()
 
 
-@dp.message_handler(state=TranslateStates.Q1)
-async def translatorState2(message: Message, state: FSMContext):
-    await state.update_data(text=message.text)
-    await message.answer(text="Выбери язык, на который перевести:", reply_markup=langKeyboard)
-    await TranslateStates.next()
-
-
-@dp.callback_query_handler(state=TranslateStates.Q2)
-async def translatorState3(call: CallbackQuery, state: FSMContext):
-    await call.answer(cache_time=60)
-    secondLang = call.data[5:]
-
-    data = await state.get_data()
-    textTran = data["text"]
-
-    itog = tsl.translate(textTran, dest=secondLang)
-
-    await call.message.answer(
-        text=f"{hbold(textTran)}\nв переводе будет\n{hbold(itog.text)}"
+@dp.callback_query_handler(state=TranslateStates.Q1)
+async def translatorState3(message: Message, state: FSMContext):
+    itog = tsl.translate(message.text, src=l.fromLang, dest=l.toLang)
+    await message.answer(
+        text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
     )
-
     await state.finish()

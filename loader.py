@@ -8,4 +8,7 @@ bot = Bot(token=dataConfig.BOT_TOKEN, parse_mode=types.ParseMode.HTML)
 storage = MemoryStorage()
 dp = Dispatcher(bot, storage=storage)
 
-tsl = Translator(service_urls=['translate.googleapis.com'])
+tsl = Translator()  # service_urls=['translate.googleapis.com']
+
+fromLang = "русский"
+toLang = "английский"
