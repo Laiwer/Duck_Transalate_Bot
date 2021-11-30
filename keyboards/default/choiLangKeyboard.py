@@ -5,11 +5,11 @@ from aiogram.utils.markdown import text
 choiLang = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="Начальный язык"),
-            KeyboardButton(text="Переводимый язык"),
+            KeyboardButton(text="✔Начальный язык👅"),
+            KeyboardButton(text="🔄Переводимый язык👅"),
         ],
         [
-            KeyboardButton(text="Отмена"),
+            KeyboardButton(text="❌Отмена❌"),
         ]
     ],
     resize_keyboard=True
