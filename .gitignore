@@ -1,6 +1,6 @@
 # закрываем виртуальное окружение
 _venv/
-data/configBot.py
+data/config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
