@@ -7,7 +7,6 @@ from keyboards.inline.language import langKeyboard
 from states.translateState import TranslateStates
 from aiogram.types.callback_query import CallbackQuery
 from aiogram.utils.markdown import hbold
-import logging
 
 
 @dp.message_handler(Text(equals=["📖Перевести📖"]))
@@ -22,17 +21,14 @@ async def translatorState2(message: Message, state: FSMContext):
     await state.update_data(text=message.text)
     await message.answer(text="Выбери язык, на который перевести:", reply_markup=langKeyboard)
     await TranslateStates.next()
-    logging.info(f"up")
 
 
 @dp.callback_query_handler(state=TranslateStates.Q2)
 async def translatorState3(call: CallbackQuery, state: FSMContext):
     await call.answer(cache_time=60)
     secondLang = call.data[5:]
-    logging.info(f"call = {secondLang}")
 
     data = await state.get_data()
-    logging.info(type(data))
     textTran = data["text"]
 
     itog = tsl.translate(textTran, dest=secondLang)
