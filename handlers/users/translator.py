@@ -14,8 +14,8 @@ async def translatorState1(message: Message, state: FSMContext):
     await TranslateStates.Q1.set()
 
 
-@dp.callback_query_handler(state=TranslateStates.Q1)
-async def translatorState3(message: Message, state: FSMContext):
+@dp.message_handler(state=TranslateStates.Q1)
+async def translatorState2(message: Message, state: FSMContext):
     itog = tsl.translate(message.text, src=l.fromLang, dest=l.toLang)
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
