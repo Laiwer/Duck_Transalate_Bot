@@ -45,3 +45,8 @@ async def setToLang2(message: Message, state: FSMContext):
         await state.finish()
     else:
         await message.answer(text="Язык не найден", reply_markup=mainKeyboard)
+
+
+@l.dp.message_handler(Text(equals=["Отмена"]))
+async def cancelSetLang(message: Message):
+    await message.answer(text="Отмена выбора языка", reply_markup=mainKeyboard)
