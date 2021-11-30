@@ -6,6 +6,7 @@ from aiogram.types import Message
 from states.translateState import TranslateStates
 from aiogram.utils.markdown import hbold
 import loader as l
+from data.dictLang import Lang
 
 
 @dp.message_handler(Text(equals=["📖Перевести📖"]))
@@ -16,7 +17,7 @@ async def translatorState1(message: Message, state: FSMContext):
 
 @dp.message_handler(state=TranslateStates.Q1)
 async def translatorState2(message: Message, state: FSMContext):
-    itog = tsl.translate(message.text, src=l.fromLang, dest=l.toLang)
+    itog = tsl.translate(message.text, src=Lang[l.fromLang], dest=Lang[l.toLang])
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
     )
