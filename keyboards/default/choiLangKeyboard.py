@@ -20,7 +20,9 @@ choiceLanguage = ReplyKeyboardMarkup(
     keyboard=[
         [
             KeyboardButton(text="русский"),
-            KeyboardButton(text="английский")
+            KeyboardButton(text="английский"),
+            KeyboardButton(text="немецкий"),
+            KeyboardButton(text="испанский"),
         ]
     ],
     resize_keyboard=True
