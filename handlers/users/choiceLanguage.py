@@ -51,6 +51,3 @@ async def setToLang2(message: Message, state: FSMContext):
 @l.dp.message_handler(Text(equals=["❌Отмена❌"]))
 async def cancelSetLang(message: Message):
     await message.answer(text="Отмена выбора языка", reply_markup=mainKeyboard)
-
-
-l.dp.bot.send_message()
