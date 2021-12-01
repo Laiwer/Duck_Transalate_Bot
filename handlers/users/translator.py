@@ -10,14 +10,14 @@ from data.dictLang import Lang
 
 
 @dp.message_handler(Text(equals=["📖Перевести📖"]))
-async def translatorState1(message: Message, state: FSMContext):
-    await message.answer(text=text("Напишите текст\n", "Начальный язык: ", hbold(fromLang), "\nПереводимый язык: ", hbold(toLang)))
+async def translatorState1(message: Message):
+    await message.answer(text=text("Напишите текст", "\nНачальный язык: ", hbold(fromLang), "\nПереводимый язык: ", hbold(toLang)))
     await TranslateStates.Q1.set()
 
 
 @dp.message_handler(state=TranslateStates.Q1)
 async def translatorState2(message: Message, state: FSMContext):
-    itog = tsl.translate(message.text, src=Lang[l.fromLang], dest=Lang[l.toLang])
+    itog = tsl.translate(message.text, src=Lang[fromLang], dest=Lang[toLang])
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
     )
