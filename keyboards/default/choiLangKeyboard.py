@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.utils.markdown import text
+from data.dictLang import listLangKeys
 
 
 choiLang = ReplyKeyboardMarkup(
@@ -19,10 +19,12 @@ choiLang = ReplyKeyboardMarkup(
 choiceLanguage = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="русский"),
-            KeyboardButton(text="английский"),
-            KeyboardButton(text="немецкий"),
-            KeyboardButton(text="испанский"),
+            KeyboardButton(text=listLangKeys[0]),
+            KeyboardButton(text=listLangKeys[1]),
+            KeyboardButton(text=listLangKeys[2]),
+        ],
+        [
+            KeyboardButton(text=listLangKeys[3]),
         ]
     ],
     resize_keyboard=True

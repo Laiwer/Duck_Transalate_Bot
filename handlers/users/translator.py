@@ -1,23 +1,28 @@
 from typing import Text
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.storage import FSMContext
-from loader import dp, tsl, fromLang, toLang
+from loader import dp, tsl, db
 from aiogram.types import Message
 from states.translateState import TranslateStates
 from aiogram.utils.markdown import hbold, text
-import loader as l
-from data.dictLang import Lang
 
 
 @dp.message_handler(Text(equals=["📖Перевести📖"]))
 async def translatorState1(message: Message):
-    await message.answer(text=text("Напишите текст", "\nНачальный язык: ", hbold(fromLang), "\nПереводимый язык: ", hbold(toLang)))
+    await message.answer(text=text(
+        "Напишите текст",
+        "\nНачальный язык: ", hbold(db.get_languages(message.from_user.id, language="f")),
+        "\nПереводимый язык: ", hbold(db.get_languages(message.from_user.id, language="t"))))
     await TranslateStates.Q1.set()
 
 
 @dp.message_handler(state=TranslateStates.Q1)
 async def translatorState2(message: Message, state: FSMContext):
-    itog = tsl.translate(message.text, src=Lang[fromLang], dest=Lang[toLang])
+
+    itog = tsl.translate(message.text,
+    src=db.get_languages(message.from_user.id, language="f"),
+    dest=db.get_languages(message.from_user.id, language="t"))
+
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
     )

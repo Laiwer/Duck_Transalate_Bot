@@ -1,6 +1,9 @@
 # закрываем виртуальное окружение
 _venv/
+# и config
 data/config.py
+# игнорируем базу данных
+dataBase/tanker.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
