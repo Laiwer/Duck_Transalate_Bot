@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from googletrans import Translator
-from data import BOT_TOKEN
+from data.data_config123_top_secret import BOT_TOKEN
 from dataBase.base import BotDb
 
 bot = Bot(token=BOT_TOKEN, parse_mode=types.ParseMode.HTML)
