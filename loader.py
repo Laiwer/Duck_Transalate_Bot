@@ -14,4 +14,4 @@ tsl = Translator()  # service_urls=['translate.googleapis.com']
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(BASE_DIR, "dataBase/tanker.db")
-db = BotDb(db_path)
+dbBot = BotDb(db_path)

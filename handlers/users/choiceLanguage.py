@@ -1,7 +1,7 @@
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.storage import FSMContext
 from aiogram.types.message import Message
-from loader import dp, db
+from loader import dp, dbBot
 from aiogram.utils.markdown import text, hbold
 from keyboards.default.choiLangKeyboard import choiLang, choiceLanguage
 from states.choiLangFrom import langFrom
@@ -12,7 +12,7 @@ from data.dict_lang import Lang
 
 @dp.message_handler(Text(equals=["👅Выбор языка👅"]))
 async def choiceLang(message: Message):
-    await message.answer(text=text("Начальный язык: ", hbold(db.get_languages(message.from_user.id, language="f")), "\nПереводимый язык: ", hbold(db.get_languages(message.from_user.id, language="t")), reply_markup=choiLang))
+    await message.answer(text=text("Начальный язык: ", hbold(dbBot.get_languages(message.from_user.id, language="f")), "\nПереводимый язык: ", hbold(db.get_languages(message.from_user.id, language="t")), reply_markup=choiLang))
 
 
 @dp.message_handler(Text(equals=["✔Начальный язык👅"]))

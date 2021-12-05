@@ -2,14 +2,14 @@ from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 from keyboards.default.mainKeyboard import mainKeyboard
 
-from loader import dp, db
+from loader import dp, dbBot
 
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
     print(message)
-    if (not db.get_is_reg_user(message.from_user.id)):
-        db.add_user(message.from_user.id, message.from_user.full_name)
+    if (not dbBot.get_is_reg_user(message.from_user.id)):
+        dbBot.add_user(message.from_user.id, message.from_user.full_name)
 
     await message.answer(f"Привет, {message.from_user.full_name}!")
     

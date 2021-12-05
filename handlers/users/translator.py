@@ -1,7 +1,7 @@
 from typing import Text
 from aiogram.dispatcher.filters import Text
 from aiogram.dispatcher.storage import FSMContext
-from loader import dp, tsl, db
+from loader import dp, tsl, dbBot
 from aiogram.types import Message
 from states.translateState import TranslateStates
 from aiogram.utils.markdown import hbold, text
