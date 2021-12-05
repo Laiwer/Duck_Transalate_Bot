@@ -3,7 +3,7 @@ import sqlite3
 
 class BotDb():
     def __init__(self):
-        self.conn = sqlite3.connect("tanker.db")
+        self.conn = sqlite3.connect("C:\Users\Илья\OneDrive\Рабочий стол\\aiogram\\new\dataBase\\tanker.db")
         self.cursor = self.conn.cursor()
 
     def get_is_reg_user(self, user_id):
