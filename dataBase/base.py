@@ -2,8 +2,8 @@ import sqlite3
 
 
 class BotDb():
-    def __init__(self, dbFile):
-        self.conn = sqlite3.connect(dbFile)
+    def __init__(self):
+        self.conn = sqlite3.connect("tanker.db")
         self.cursor = self.conn.cursor()
 
     def get_is_reg_user(self, user_id):
