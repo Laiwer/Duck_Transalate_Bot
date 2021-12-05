@@ -1,7 +1,7 @@
 # закрываем виртуальное окружение
 _venv/
 # и config
-data/data_config123.py
+data/data_config123_top_secret.py
 # игнорируем базу данных
 dataBase/tanker.db
 
