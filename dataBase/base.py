@@ -7,11 +7,11 @@ class BotDb():
         self.cursor = self.conn.cursor()
 
     def get_is_reg_user(self, user_id):
-        result = self.cursor.execute("SELECT id FROM users WHERE user_id == ?;", (user_id,))
+        result = self.cursor.execute("SELECT id FROM users WHERE user_id = ?;", (user_id,))
         return bool(len(result.fetchall()))
 
     def add_user(self, user_id, full_name):
-        self.cursor.execute("INSERT INTO users VALUES (?, ?);", (user_id, full_name))
+        self.cursor.execute("INSERT INTO users (user_id, full_name) VALUES (?, ?);", (user_id, full_name))
         self.cursor.execute("INSERT INTO records VALUES (?, ?, ?);", (user_id, 'русский', 'английский'))
         return self.conn.commit()
 
