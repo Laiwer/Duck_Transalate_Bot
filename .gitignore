@@ -3,7 +3,6 @@ _venv/
 # и config
 data/data_config123_top_secret.py
 # игнорируем базу данных
-dataBase/tanker.db
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
