@@ -7,7 +7,7 @@ class BotDb():
         self.cursor = self.conn.cursor()
 
     def get_is_reg_user(self, user_id):
-        result = self.cursor.execute("SELECT id FROM user WHERE user_id == ?", (user_id,))
+        result = self.cursor.execute("SELECT id FROM users WHERE user_id == ?", (user_id,))
         return bool(len(result.fetchall()))
 
     def add_user(self, user_id, full_name):

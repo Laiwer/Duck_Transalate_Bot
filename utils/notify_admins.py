@@ -21,3 +21,5 @@ async def on_shutdown_notify(dp:Dispatcher):
 
         except Exception as err:
             logging.exception(err)
+
+# 
