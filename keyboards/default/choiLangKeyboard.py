@@ -1,5 +1,5 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from data.dictLang import listLangKeys
+from data.dict_lang import listLangKeys
 
 
 choiLang = ReplyKeyboardMarkup(

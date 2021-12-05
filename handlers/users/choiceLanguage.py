@@ -7,7 +7,7 @@ from keyboards.default.choiLangKeyboard import choiLang, choiceLanguage
 from states.choiLangFrom import langFrom
 from states.choiLangTo import langTo
 from keyboards.default.mainKeyboard import mainKeyboard
-from data.dictLang import Lang
+from data.dict_lang import Lang
 
 
 @dp.message_handler(Text(equals=["👅Выбор языка👅"]))
