@@ -2,7 +2,7 @@ import logging
 
 from aiogram import Dispatcher
 
-from data.data_config import ADMINS
+from data.data_config123 import ADMINS
 
 
 async def on_startup_notify(dp: Dispatcher):
