@@ -12,7 +12,7 @@ from data.dict_lang import Lang
 
 @dp.message_handler(Text(equals=["👅Выбор языка👅"]))
 async def choiceLang(message: Message):
-    await message.answer(text=text("Начальный язык: ", hbold(dbBot.get_languages(message.from_user.id, language="f")), "\nПереводимый язык: ", hbold(db.get_languages(message.from_user.id, language="t")), reply_markup=choiLang))
+    await message.answer(text=text("Начальный язык: ", hbold(dbBot.get_languages(message.from_user.id, language="f")), "\nПереводимый язык: ", hbold(dbBot.get_languages(message.from_user.id, language="t")), reply_markup=choiLang))
 
 
 @dp.message_handler(Text(equals=["✔Начальный язык👅"]))
@@ -25,7 +25,7 @@ async def setFromLang1(message: Message):
 @dp.message_handler(state=langFrom.Q1)
 async def setFromLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
-        db.set_languages(message.from_user.id, from_lang=message.text, to_lang=None)
+        dbBot.set_languages(message.from_user.id, from_lang=message.text, to_lang=None)
 
         await message.answer(text="Начальный язык установлен", reply_markup=choiLang)
         await state.finish()
@@ -42,7 +42,7 @@ async def setToLang1(message: Message):
 @dp.message_handler(state=langTo.Q1)
 async def setToLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
-        db.set_languages(message.from_user.id, from_lang=None, to_lang=message.text)
+        dbBot.set_languages(message.from_user.id, from_lang=None, to_lang=message.text)
 
         await message.answer(text="Переводимый язык установлен", reply_markup=choiLang)
         await state.finish()

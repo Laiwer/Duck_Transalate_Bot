@@ -11,8 +11,8 @@ from aiogram.utils.markdown import hbold, text
 async def translatorState1(message: Message):
     await message.answer(text=text(
         "Напишите текст",
-        "\nНачальный язык: ", hbold(db.get_languages(message.from_user.id, language="f")),
-        "\nПереводимый язык: ", hbold(db.get_languages(message.from_user.id, language="t"))))
+        "\nНачальный язык: ", hbold(dbBot.get_languages(message.from_user.id, language="f")),
+        "\nПереводимый язык: ", hbold(dbBot.get_languages(message.from_user.id, language="t"))))
     await TranslateStates.Q1.set()
 
 
@@ -20,8 +20,8 @@ async def translatorState1(message: Message):
 async def translatorState2(message: Message, state: FSMContext):
 
     itog = tsl.translate(message.text,
-    src=db.get_languages(message.from_user.id, language="f"),
-    dest=db.get_languages(message.from_user.id, language="t"))
+    src=dbBot.get_languages(message.from_user.id, language="f"),
+    dest=dbBot.get_languages(message.from_user.id, language="t"))
 
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
