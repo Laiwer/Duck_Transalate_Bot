@@ -2,7 +2,7 @@ import logging
 
 from aiogram import Dispatcher
 
-from data.data_config123_top_secret import ADMINS
+from data.config_data_top_secret import ADMINS
 
 
 async def on_startup_notify(dp: Dispatcher):
