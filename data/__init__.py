@@ -1,2 +1,1 @@
-from . import top_data_config
-from . import dict_lang
+__all__ = ["top_data_config", "dict_lang"]
