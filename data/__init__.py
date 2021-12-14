@@ -1,1 +1,2 @@
-__all__ = ["config_data", "dict_lang"]
+from . import config_data
+from . import dict_lang
