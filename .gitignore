@@ -1,8 +1,7 @@
 # закрываем виртуальное окружение
 _venv/
 # и config
-data/data_config123_top_secret.py
-# игнорируем базу данных
+data/config_data.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

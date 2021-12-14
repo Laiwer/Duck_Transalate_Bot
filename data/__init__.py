@@ -1,1 +1,1 @@
-__all__ = ["data_config123_top_secret", "dict_lang"]
+__all__ = ["config_data", "dict_lang"]

@@ -1,29 +1,27 @@
-import sqlite3
+from loader import coll
+from data.dict_lang import listLangKeys
+from datetime import datetime
 
 
-class BotDb():
-    def __init__(self):
-        self.conn = sqlite3.connect("tanker.db")
-        self.cursor = self.conn.cursor()
+def existe_user_in_data_base(user_id):
+    return bool(coll.count_documents({"user__id": user_id}))
 
-    def get_is_reg_user(self, user_id):
-        result = self.cursor.execute("SELECT id FROM users WHERE user_id = ?;", (user_id,))
-        return bool(len(result.fetchall()))
 
-    def add_user(self, user_id, full_name):
-        self.cursor.execute("INSERT INTO users (user_id, full_name) VALUES (?, ?);", (user_id, full_name))
-        self.cursor.execute("INSERT INTO records VALUES (?, ?, ?);", (user_id, 'русский', 'английский'))
-        return self.conn.commit()
+def add_user_in_data_base(user_id, user_name, full_name):
+    user_info = {
+        "user__id": user_id,
+        "user_name": user_name,
+        "full_name": full_name,
+        "date_reg": datetime.now(),
+        "from_lang": listLangKeys[0],
+        "to_lang": listLangKeys[1]
+    }
+    coll.insert_one(user_info)
 
-    def set_languages(self,user_id, from_lang, to_lang):
-        if from_lang is None:
-            self.cursor.execute("UPDATE records SET to_lang = ? WHERE user_id = ?;", (to_lang, user_id))
-        elif to_lang is None:
-            self.cursor.execute("UPDATE records SET from_lang = ? WHERE user_id = ?;", (from_lang, user_id))
-        return self.conn.commit()
 
-    def get_languages(self, user_id, language="f"):
-        from_lang = self.cursor.execute("SELECT from_lang FROM records WHERE user_id = ?;", (user_id,))
-        to_lang = self.cursor.execute("SELECT to_lang FROM records WHERE user_id = ?;", (user_id,))
-        # условие в одну строчку
-        return from_lang if language == "f" else to_lang
+def get_lang_from_data_base(user_id, lang):
+    return coll.find_one({"user__id": user_id})[lang]
+
+
+def update_lang_in_data_base(user_id, why_lang, lang):
+    coll.update_one({"user__id": user_id}, {"$set": {why_lang: lang}})

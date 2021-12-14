@@ -1,18 +1,14 @@
 from aiogram import types
 from aiogram.dispatcher.filters.builtin import CommandStart
 from keyboards.default.mainKeyboard import mainKeyboard
-
-from loader import dp, dbBot
+from dataBase.base import existe_user_in_data_base, add_user_in_data_base
+from loader import dp
 
 
 @dp.message_handler(CommandStart())
 async def bot_start(message: types.Message):
     print(message)
-    if (not dbBot.get_is_reg_user(message.from_user.id)):
-        dbBot.add_user(message.from_user.id, message.from_user.full_name)
+    if not(existe_user_in_data_base(message.from_user.id)):
+        add_user_in_data_base(message.from_user.id, message.from_user.username, message.from_user.full_name)
 
-    await message.answer(f"Привет, {message.from_user.full_name}!")
-    
-    news = """Из бета-теста я перешёл в стадию пре-релиза(v0.2).
-Добавилось больше языков и для тебя, юзера, не заметное, но очень важное - это База Данных."""
-    await message.answer(text=news, reply_markup=mainKeyboard)
+    await message.answer(f"Привет, {message.from_user.full_name}!", reply_markup=mainKeyboard)
