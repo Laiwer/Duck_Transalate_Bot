@@ -12,6 +12,6 @@ dp = Dispatcher(bot, storage=storage)
 
 tsl = Translator()  # service_urls=['translate.googleapis.com']
 
-cluster = MongoClient(nstf1dc.ip, connect=False)
+cluster = MongoClient(nstf1dc.ip)
 db = cluster["dataBase"]
 coll = db["collection1"]
