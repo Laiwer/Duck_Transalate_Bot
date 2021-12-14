@@ -2,12 +2,12 @@ import logging
 
 from aiogram import Dispatcher
 
-from data.top_data_config import ADMINS
+from data import no_see_this_file_12345_data_config as nstf1dc
 
 
 async def on_startup_notify(dp: Dispatcher):
 
-    for admin in ADMINS:
+    for admin in nstf1dc.ADMINS:
         try:
             await dp.bot.send_message(admin, "Бот Запущен")
 
@@ -15,7 +15,7 @@ async def on_startup_notify(dp: Dispatcher):
             logging.exception(err)
 
 async def on_shutdown_notify(dp:Dispatcher):
-    for admin in ADMINS:
+    for admin in nstf1dc.ADMINS:
         try:
             await dp.bot.send_message(admin, "Бот Выключился")
 

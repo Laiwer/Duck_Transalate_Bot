@@ -1,3 +1,1 @@
-from . import top_data_config
-from top_data_config import BOT_TOKEN, ADMINS, ip
-from . import dict_lang
+__all__ = ["no_see_this_file_12345_data_config", "dict_lang"]
