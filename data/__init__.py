@@ -1,1 +1,2 @@
-__all__ = ["top_data_config", "dict_lang"]
+from top_data_config import BOT_TOKEN, ADMINS, ip
+from . import dict_lang
