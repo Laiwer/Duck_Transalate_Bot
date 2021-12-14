@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from googletrans import Translator
-from data.top_data_config import BOT_TOKEN, ip
+from data import BOT_TOKEN, ip
 from pymongo import MongoClient
 
 
