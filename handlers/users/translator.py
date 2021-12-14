@@ -12,8 +12,8 @@ from dataBase.base import get_lang_from_data_base
 async def translatorState1(message: Message):
     await message.answer(text=text(
         "Напишите текст",
-        "\nНачальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_user")),
-        "\nПереводимый язык: ", hbold(get_lang_from_data_base(message.from_user.id, "to_user"))))
+        "\nНачальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_lang")),
+        "\nПереводимый язык: ", hbold(get_lang_from_data_base(message.from_user.id, "to_lang"))))
     await TranslateStates.Q1.set()
 
 
@@ -21,8 +21,8 @@ async def translatorState1(message: Message):
 async def translatorState2(message: Message, state: FSMContext):
 
     itog = tsl.translate(message.text,
-    src=get_lang_from_data_base(message.from_user.id, "from_user"),
-    dest=get_lang_from_data_base(message.from_user.id, "to_user"))
+    src=get_lang_from_data_base(message.from_user.id, "from_lang"),
+    dest=get_lang_from_data_base(message.from_user.id, "to_lang"))
 
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
