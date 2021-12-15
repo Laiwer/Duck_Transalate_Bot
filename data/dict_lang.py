@@ -16,3 +16,9 @@ Lang = {
     "🇹🇷Турецкий🇹🇷": "tr",
 }
 listLangKeys = list(Lang.keys())
+
+
+def get_key(_dict, value):
+    for k, v in _dict.items():
+        if v == value:
+            return k

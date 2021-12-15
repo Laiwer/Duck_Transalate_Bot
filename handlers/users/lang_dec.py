@@ -4,7 +4,7 @@ from aiogram.dispatcher.storage import FSMContext
 from aiogram.utils.markdown import hbold, text
 from loader import dp, tsl
 from states.detecLangState import langDetect
-from data.dict_lang import Lang
+from data.dict_lang import Lang, get_key
 
 
 @dp.message_handler(Text(equals=["🤖Определить язык👅"]))
@@ -18,7 +18,7 @@ async def language_find1(message: Message):
 async def language_find2(message: Message, state: FSMContext):
     itog = tsl.detect(message.text).lang
     try:
-        await message.answer(text=Lang[itog])
+        await message.answer(text=Lang[get_key(Lang, itog)])
     except:
         await message.answer(text=text(f"{itog}", "\nТакого языка нету в моей базе данных!"))
 
