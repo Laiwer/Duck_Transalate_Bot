@@ -8,14 +8,14 @@ from data.dict_lang import Lang
 
 
 @dp.message_handler(Text(equals=["🤖Определить язык👅"]))
-async def detect_language1(message: Message):
+async def language_find1(message: Message):
     await message.answer(text=hbold("Введите текст"))
 
     await langDetect.Q1.set()
 
 
 @dp.message_handler(state=langDetect.Q1)
-async def detect_language2(message: Message, state: FSMContext):
+async def language_find2(message: Message, state: FSMContext):
     itog = tsl.detect(message.text).lang
     try:
         await message.answer(text=Lang[itog])

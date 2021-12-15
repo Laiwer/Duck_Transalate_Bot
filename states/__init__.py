@@ -1,3 +1,1 @@
-from . import detectLangState
-from . import choiLangFrom
-from . import choiLangTo
+__all__ = ["choiLangFrom", "choiLangTo", "detectLangState"]
