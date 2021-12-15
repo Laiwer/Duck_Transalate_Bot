@@ -30,7 +30,7 @@ async def setFromLang1(message: Message):
 async def setFromLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
         if message.text == get_lang_from_data_base(message.from_user.id, "to_lang"):
-            if get_lang_from_data_base(message.from_user.id, "from_lang") == "❔Определить язык👅":
+            if get_lang_from_data_base(message.from_user.id, "from_lang") == "🔎Определить👅":
                 update_lang_in_data_base(message.from_user.id, "to_lang", "🇬🇧Английский🇬🇧")
                 update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
             else:
