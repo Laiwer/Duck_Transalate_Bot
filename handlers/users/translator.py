@@ -1,6 +1,6 @@
 from loader import dp, tsl
 from aiogram.types import Message
-from aiogram.utils.markdown import hbold, text
+from aiogram.utils.markdown import hbold, text, hunderline, hitalic
 from dataBase.base import get_lang_from_data_base
 from data.dict_lang import Lang
 
@@ -14,6 +14,6 @@ async def translatorState2(message: Message):
     await message.answer(text=text(
         "\nНачальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_lang")),
         "\nПереводимый язык: ", hbold(get_lang_from_data_base(message.from_user.id, "to_lang"))))
-    await message.answer(
-        text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
-    )
+    await message.answer(text=f"{hbold(message.text)}")
+    await message.answer(text=hunderline(hitalic("в переводе будет")))
+    await message.answer(text=f"{hbold(itog.text)}")
