@@ -3,7 +3,7 @@ from aiogram.dispatcher.storage import FSMContext
 from aiogram.types.message import Message
 from loader import dp
 from aiogram.utils.markdown import text, hbold
-from keyboards.default.choiLangKeyboard import choiLang, choiceLanguage
+from keyboards.default.choiLangKeyboard import choiLang, choiceLanguageFrom, choiceLanguageTo
 from states.choiLangFrom import langFrom
 from states.choiLangTo import langTo
 from keyboards.default.mainKeyboard import mainKeyboard
@@ -21,7 +21,7 @@ async def choiceLang(message: Message):
 
 @dp.message_handler(Text(equals=["✔Начальный язык👅"]))
 async def setFromLang1(message: Message):
-    await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguage)
+    await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguageFrom)
 
     await langFrom.Q1.set()
 
@@ -30,8 +30,12 @@ async def setFromLang1(message: Message):
 async def setFromLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
         if message.text == get_lang_from_data_base(message.from_user.id, "to_lang"):
-            update_lang_in_data_base(message.from_user.id, "to_lang", get_lang_from_data_base(message.from_user.id, "from_lang"))
-            update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
+            if get_lang_from_data_base(message.from_user.id, "from_lang") == "❔Определить язык👅":
+                update_lang_in_data_base(message.from_user.id, "to_lang", "🇬🇧Английский🇬🇧")
+                update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
+            else:
+                update_lang_in_data_base(message.from_user.id, "to_lang", get_lang_from_data_base(message.from_user.id, "from_lang"))
+                update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
         else:
             update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
 
@@ -44,7 +48,7 @@ async def setFromLang2(message: Message, state: FSMContext):
 
 @dp.message_handler(Text(equals=["🔄Переводимый язык👅"]))
 async def setToLang1(message: Message):
-    await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguage)
+    await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguageTo)
     await langTo.Q1.set()
 
 
