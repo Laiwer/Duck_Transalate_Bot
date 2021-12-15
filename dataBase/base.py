@@ -9,7 +9,7 @@ def existe_user_in_data_base(user_id):
 
 def add_user_in_data_base(user_id, user_name, full_name):
     dt = datetime.now()
-    time = f"{dt.hour}:{dt.minute}:{dt.second} | {dt.day}.{dt.month}.{dt.year}"
+    time = f"{int(dt.hour)+3}:{dt.minute}:{dt.second} | {dt.day}.{dt.month}.{dt.year}"
     user_info = {
         "user__id": user_id,
         "user_name": user_name,
