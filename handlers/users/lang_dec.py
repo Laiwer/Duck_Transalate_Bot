@@ -18,7 +18,7 @@ async def language_find1(message: Message):
 async def language_find2(message: Message, state: FSMContext):
     itog = tsl.detect(message.text).lang
     try:
-        await message.answer(text=Lang[get_key(Lang, itog)])
+        await message.answer(text=get_key(Lang, itog))
     except:
         await message.answer(text=text(f"{itog}", "\nТакого языка нету в моей базе данных!"))
 
