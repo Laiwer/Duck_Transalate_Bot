@@ -2,6 +2,9 @@
 _venv/
 # и config
 data/no_see_this_file_12345_data_config.py
+# закрываем файлы связаные с heroku
+Procfile
+runtime.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
