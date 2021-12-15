@@ -20,13 +20,9 @@ async def translatorState1(message: Message):
 
 @dp.message_handler(state=TranslateStates.Q1)
 async def translatorState2(message: Message, state: FSMContext):
-    if Lang[get_lang_from_data_base(message.from_user.id, "from_lang")] == "❔Определить язык👅":
-        itog = tsl.translate(message.text,
-        dest=Lang[get_lang_from_data_base(message.from_user.id, "to_lang")])
-    else:
-        itog = tsl.translate(message.text,
-        src=Lang[get_lang_from_data_base(message.from_user.id, "from_lang")],
-        dest=Lang[get_lang_from_data_base(message.from_user.id, "to_lang")])
+    itog = tsl.translate(message.text,
+    src=Lang[get_lang_from_data_base(message.from_user.id, "from_lang")],
+    dest=Lang[get_lang_from_data_base(message.from_user.id, "to_lang")])
 
     await message.answer(
         text=f"{hbold(message.text)}\nв переводе будет\n{hbold(itog.text)}"
