@@ -30,7 +30,7 @@ async def setFromLang1(message: Message):
 async def setFromLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
         if message.text == get_lang_from_data_base(message.from_user.id, "to_lang"):
-            update_lang_in_data_base(message.from_user.id, "to_lang", update_lang_in_data_base(message.from_user.id, "from_lang", message.text))
+            update_lang_in_data_base(message.from_user.id, "to_lang", get_lang_from_data_base(message.from_user.id, "from_lang"))
             update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
         else:
             update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
@@ -51,7 +51,7 @@ async def setToLang1(message: Message):
 async def setToLang2(message: Message, state: FSMContext):
     if message.text in list(Lang.keys()):
         if message.text == get_lang_from_data_base(message.from_user.id, "from_lang"):
-            update_lang_in_data_base(message.from_user.id, "from_lang", update_lang_in_data_base(message.from_user.id, "to_lang", message.text))
+            update_lang_in_data_base(message.from_user.id, "from_lang", get_lang_from_data_base(message.from_user.id, "to_lang"))
             update_lang_in_data_base(message.from_user.id, "to_lang", message.text)
         else:
             update_lang_in_data_base(message.from_user.id, "to_lang", message.text)
