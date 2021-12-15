@@ -11,7 +11,7 @@ from data.dict_lang import Lang
 from dataBase.base import get_lang_from_data_base, update_lang_in_data_base
 
 
-@dp.message_handler(Text(equals=["👅Выбор языка👅"]))
+@dp.message_handler(Text(equals=["👀Выбор языка👅"]))
 async def choiceLang(message: Message):
     await message.answer(text=text(
         "Начальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_lang")),
