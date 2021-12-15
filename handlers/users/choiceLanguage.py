@@ -35,7 +35,8 @@ async def setFromLang2(message: Message, state: FSMContext):
         else:
             update_lang_in_data_base(message.from_user.id, "from_lang", message.text)
 
-        await message.answer(text="Начальный язык установлен", reply_markup=choiLang)
+        await message.answer(text=text("Начальный язык установлен", "\nНачальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_lang")),
+        "\nПереводимый язык: ", hbold(get_lang_from_data_base(message.from_user.id, "to_lang"))), reply_markup=choiLang)
         await state.finish()
     else:
         await message.answer(text="Начальный язык не найден", reply_markup=choiLang)
@@ -56,7 +57,8 @@ async def setToLang2(message: Message, state: FSMContext):
         else:
             update_lang_in_data_base(message.from_user.id, "to_lang", message.text)
 
-        await message.answer(text="Переводимый язык установлен", reply_markup=choiLang)
+        await message.answer(text=text("Переводимый язык установлен", "\nНачальный язык: ", hbold(get_lang_from_data_base(message.from_user.id, "from_lang")),
+        "\nПереводимый язык: ", hbold(get_lang_from_data_base(message.from_user.id, "to_lang"))), reply_markup=choiLang)
         await state.finish()
     else:
         await message.answer(text="Переводимый язык не найден", reply_markup=choiLang)
