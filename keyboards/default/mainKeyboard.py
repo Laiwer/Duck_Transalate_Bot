@@ -6,6 +6,9 @@ mainKeyboard = ReplyKeyboardMarkup(
         [
             KeyboardButton(text="👅Язык👅"),
             KeyboardButton(text="👀Выбор языка👅"),
+        ],
+        [
+            KeyboardButton(text="🤖Определить язык👅")
         ]
     ],
     resize_keyboard=True
