@@ -1,14 +1,7 @@
-Первый абзац
+TranslatorBot
 ---
-Второй абзац
-
-# h1
-## h2
-### h3
-#### h4
-##### h5
-###### h6
-
+## Aiogram
+Этот бот написан с помощью библиотеки **Aiogram**
 [гугл](http://webdesign.ru.net)
 
 <http://webdesign.ru.net>
@@ -22,26 +15,16 @@
     dir /images
     dir /js
 
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
-
-```php
-<?php here_pagecontent(); ?>
-```
-
-```scss /* или css */
-@import "bower_components/tree-normalize/generic.normalize";
-h1 {
- font-size:1.5em;
- font-weight: 300;
-}
+```python
+a = 2
+b = 5
+print(a + b)
 ```
 
 > Текст
-> 
-> Продолжение текста выделенного блока
-> Завершение текста
+>> 
+>> Продолжение текста выделенного блока
+>>> Завершение текста
 
 Название файла  | Содержание файла
 ----------------|----------------------
