@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from googletrans import Translator
-from data import no_see_this_file_12345_data_config as nstf1dc
+from data import config as nstf1dc
 from pymongo import MongoClient
 import dns
 

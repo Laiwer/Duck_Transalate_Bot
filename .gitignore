@@ -1,7 +1,7 @@
 # закрываем виртуальное окружение
 _venv/
 # и config
-data/no_see_this_file_12345_data_config.py
+data/config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
