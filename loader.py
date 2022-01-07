@@ -3,7 +3,6 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from googletrans import Translator
 from data import gtyhjhgfdrhoikjhg as nstf1dc
 from pymongo import MongoClient
-import dns
 
 
 bot = Bot(token=nstf1dc.BOT_TOKEN, parse_mode=types.ParseMode.HTML)
