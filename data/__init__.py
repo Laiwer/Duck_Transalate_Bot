@@ -1,2 +1,2 @@
-import config
-import dict_lang
+from . import config
+from . import dict_lang
