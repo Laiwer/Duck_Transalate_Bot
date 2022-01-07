@@ -1,7 +1,7 @@
 from aiogram import executor
 
 from loader import dp
-import middlewares, filters, handlers
+import handlers
 from utils.notify_admins import on_startup_notify, on_shutdown_notify
 from utils.set_bot_commands import set_default_commands
 
