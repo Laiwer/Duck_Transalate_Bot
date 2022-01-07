@@ -22,7 +22,6 @@ async def choiceLang(message: Message):
 @dp.message_handler(Text(equals=["✔Начальный язык👅"]))
 async def setFromLang1(message: Message):
     await message.answer(text="Выбери один из имеющихся языков: ", reply_markup=choiceLanguageFrom)
-
     await langFrom.Q1.set()
 
 
