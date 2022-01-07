@@ -1,1 +1,2 @@
-__all__ = ["config", "dict_lang"]
+import config
+import dict_lang
