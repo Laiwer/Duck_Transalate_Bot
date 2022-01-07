@@ -1,2 +1,1 @@
-from . import config
-from . import dict_lang
+__all__ = ["gtyhjhgfdrhoikjhg", "dict_lang"]
