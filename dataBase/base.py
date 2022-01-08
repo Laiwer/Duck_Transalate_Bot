@@ -22,8 +22,8 @@ def add_user_in_data_base(user_id, user_name, full_name):
 
 
 def get_lang_from_data_base(user_id):
-    return coll.find_one({"user__id": user_id})["to_lang"]
+    return coll.find_one({"user__id": user_id})["lang"]
 
 
 def update_lang_in_data_base(user_id, lang):
-    coll.update_one({"user__id": user_id}, {"to_lang": lang})
+    coll.update_one({"user__id": user_id}, {"lang": lang})
