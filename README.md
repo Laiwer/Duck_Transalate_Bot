@@ -5,4 +5,4 @@ TranslatorBot
 ## Перевод текста
 Перевод текста сделан с помощью библиотеки [**Googletrans**](https://py-googletrans.readthedocs.io/en/latest/)
 ## База данных
-В данном проэкте базой данной выступает MongoDB
+В данном проекте базой данной выступает [**MongoDB**](https://www.mongodb.com/)
