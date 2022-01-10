@@ -1,1 +1,1 @@
-__all__ = ["gtyhjhgfdrhoikjhg", "dict_lang"]
+__all__ = ["gg_top_lol_secret", "dict_lang"]
