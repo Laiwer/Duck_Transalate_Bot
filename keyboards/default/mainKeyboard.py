@@ -4,7 +4,7 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 mainKeyboard = ReplyKeyboardMarkup(
     keyboard=[
         [
-            KeyboardButton(text="Язык"),
+            KeyboardButton(text="Какой язык сейчас"),
             KeyboardButton(text="Выбор языка"),
         ],
         [

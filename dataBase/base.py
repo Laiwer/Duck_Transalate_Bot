@@ -26,4 +26,4 @@ def get_lang_from_data_base(user_id):
 
 
 def update_lang_in_data_base(user_id, lang):
-    coll.update_one({"user__id": user_id}, {"lang": lang})
+    coll.update_one({"user__id": user_id}, {"$set": {"lang": lang}})

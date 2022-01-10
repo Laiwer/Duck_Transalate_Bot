@@ -2,7 +2,7 @@ import logging
 
 from aiogram import Dispatcher
 
-from data import gtyhjhgfdrhoikjhg as nstf1dc
+from data import gg_top_lol_secret as nstf1dc
 
 
 async def on_startup_notify(dp: Dispatcher):
