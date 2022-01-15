@@ -106,7 +106,7 @@ Lang = {
     'яванский': 'jw',
     'японский': 'ja'
 }
-# listLangKeys = list(Lang.keys())
+
 
 def get_key(_dict, value):
     for k, v in _dict.items():
