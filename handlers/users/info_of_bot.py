@@ -1,17 +1,12 @@
-from aiogram import types
-from aiogram.dispatcher.filters.builtin import CommandStart
-from keyboards.default.mainKeyboard import mainKeyboard
-from dataBase.base import existe_user_in_data_base, add_user_in_data_base
 from loader import dp
+from aiogram.types import Message
+from aiogram.dispatcher.filters import Text
 from aiogram.utils.markdown import text
 
 
-@dp.message_handler(CommandStart())
-async def bot_start(message: types.Message):
-    if not(existe_user_in_data_base(message.from_user.id)):
-        add_user_in_data_base(message.from_user.id, message.from_user.username, message.from_user.full_name)
-    await message.answer_sticker("CAACAgIAAxkBAAEDqF5h3E2AM0D5ql5wOMvBBDv0r_OQxwACAQEAAladvQoivp8OuMLmNCME")
-
+@dp.message_handler(Text(equals=["Инструкция"]))
+async def print_language(message: Message):
+    await message.answer_sticker("CAACAgIAAxkBAAEDselh46rQ-UvPOgZV9vfTLn64ZQLHyAAC9wADVp29CgtyJB1I9A0wIwQ")
     instruction=text(f"Привет, {message.from_user.full_name}!\n\n",
                     "Это краткая инструкция по использованию меня.\n",
                     "Если ты нажмёшь на кнопку <u><b>\"Какой сейчас язык\"</b></u>, то я скажу тебе какой сейчас выбран язык для перевода.\n\n",
@@ -24,5 +19,4 @@ async def bot_start(message: types.Message):
                     "Также ты можешь заметить во время набора текста в инлайн-режиме в вверху(над переведённым текстом) есть строка",
                     "\"Поменять язык\" и ты сразу можешь перейти к боту и выбрать язык.\n\n",
                     "Посмотреть эту инструкцию снова ты можешь нажать на кнопку \"Инструкция\".")
-
-    await message.answer(text=instruction, reply_markup=mainKeyboard, parse_mode="html")
+    await message.answer(text=instruction, parse_mode="html")

@@ -17,7 +17,7 @@ async def language_find1(message: Message):
 
 @dp.message_handler(state=langDetect.Q1)
 async def language_find2(message: Message, state: FSMContext):
-    itog = tsl.detect(message.text).lang
+    itog = tsl.detect(message.text).lang.lower()
     try:
         await message.answer(text=hbold(get_key(Lang, itog).capitalize()))
     except:

@@ -8,7 +8,8 @@ mainKeyboard = ReplyKeyboardMarkup(
             KeyboardButton(text="Выбор языка"),
         ],
         [
-            KeyboardButton(text="Определить язык")
+            KeyboardButton(text="Определить язык"),
+            KeyboardButton(text="Инструкция")
         ]
     ],
     resize_keyboard=True
