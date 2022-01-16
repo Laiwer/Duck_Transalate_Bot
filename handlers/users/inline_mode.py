@@ -12,7 +12,7 @@ async def inline_answer(query: InlineQuery):
             arti = [InlineQueryResultArticle(
                 id=query.from_user.id,
                 title="/\ Перейдите к боту и начните оттуда /\\",
-                input_message_content=InputTextMessageContent(message_text="")
+                input_message_content=InputTextMessageContent(message_text="none, because not reg")
             )]
             await query.answer(results=arti, cache_time=1, is_personal=True,
                                 switch_pm_text="Начать", switch_pm_parameter="_")
