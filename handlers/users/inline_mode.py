@@ -11,8 +11,8 @@ async def inline_answer(query: InlineQuery):
         if not(existe_user_in_data_base(query.from_user.id)):
             arti = [InlineQueryResultArticle(
                 id=query.from_user.id,
-                title="/\ Перейдите к боту и начните оттуда /\\",
-                input_message_content=InputTextMessageContent(message_text="none, because not reg")
+                title="👆Перейдите к боту и начните оттуда☝",
+                input_message_content=InputTextMessageContent(message_text="hello")
             )]
             await query.answer(results=arti, cache_time=1, is_personal=True,
                                 switch_pm_text="Начать", switch_pm_parameter="_")
@@ -21,7 +21,7 @@ async def inline_answer(query: InlineQuery):
             articles = [InlineQueryResultArticle(
                 id=query.from_user.id,
                 title=itog.text,
-                description=f"Установлен язык: {get_lang_from_data_base(query.from_user.id)}\nПоменять можно нажав на кнопку выше",
+                description=f"Установлен язык: {get_lang_from_data_base(query.from_user.id)}\nПоменять можно нажав на кнопку выше☝",
                 input_message_content=InputTextMessageContent(message_text=itog.text)
             )]
             await query.answer(results=articles, cache_time=1, is_personal=True,
