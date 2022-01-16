@@ -1,2 +1,2 @@
-from . import gg_top_lol_secret
-__all__ = ["gg_top_lol_secret", "dict_lang"]
+from . import data_config
+__all__ = ["data_config", "dict_lang"]

@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from googletrans import Translator
-from data import gg_top_lol_secret as nstf1dc
+from data import data_config as nstf1dc
 from pymongo import MongoClient
 
 
