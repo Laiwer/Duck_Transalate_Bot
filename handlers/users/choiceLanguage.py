@@ -5,18 +5,21 @@ from aiogram.dispatcher.filters.builtin import CommandStart
 from loader import dp
 from aiogram.utils.markdown import text, hbold
 from keyboards.inline.choiceLang import choicePage1, choicePage2, choicePage3, choicePage4, choicePage5, choicePage6, choicePage7
-from dataBase.base import get_lang_from_data_base, update_lang_in_data_base
+from dataBase.base import get_lang_from_data_base, update_lang_in_data_base, existe_user_in_data_base
 from keyboards.inline.base_structure_callback_datas import langCodeCallback as lCC
 from data.dict_lang import get_key, Lang
 
 
 @dp.message_handler(Text(equals=["Выбор языка"]))
 async def choiceLang(message: Message):
-    await message.answer_sticker("CAACAgIAAxkBAAEDqGBh3E5llL9di62YGKkJVZQ43Rvu_gACAgEAAladvQpO4myBy0Dk_yME")
-    await message.answer(text=text(
-    "Сейчас язык: ", hbold(get_lang_from_data_base(message.from_user.id).capitalize()),
-    "\nСтраница", hbold("1/7")),
-    reply_markup=choicePage1)
+    if not(existe_user_in_data_base(message.from_user.id)):
+        await message.answer(text="Отправьте мне команду /start")
+    else:
+        await message.answer_sticker("CAACAgIAAxkBAAEDqGBh3E5llL9di62YGKkJVZQ43Rvu_gACAgEAAladvQpO4myBy0Dk_yME")
+        await message.answer(text=text(
+        "Сейчас язык: ", hbold(get_lang_from_data_base(message.from_user.id).capitalize()),
+        "\nСтраница", hbold("1/7")),
+        reply_markup=choicePage1)
 
 dp.register_message_handler(choiceLang, CommandStart(deep_link="choice"), state="*")
 
