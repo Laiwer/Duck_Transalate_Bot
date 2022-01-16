@@ -1,7 +1,7 @@
 # закрываем виртуальное окружение
 _venv/
 # и config
-data/gg_top_lol_secret.py
+# data/data_config.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
